@@ -8,7 +8,6 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 def main():
     global_init("db/blogs.db")
-    app.run()
     data = (
         ["Scott", "Ridley", 21, "captain", "research engineer", "module_1", "scott_chief@mars.org"],
         ["Luke", "Skywalker", 17, "master-jedi", "lasersaber fighter", "module_2", "iamnotyourson@endor.org"],
@@ -21,6 +20,13 @@ def main():
         user.surname, user.name, user.age, user.position, user.speciality, user.address, user.email = elem
         session.add(user)
         session.commit()
+    jobs = (1, "deployment of residential modules 1 and 2", 15, "2, 3", False)
+    job = Job()
+    job.team_leader, job.job, job.work_size, job.collaborators, job.is_finished = jobs
+    session = create_session()
+    session.add(job)
+    session.commit()
+    app.run()
 
 if __name__ == '__main__':
     main()
