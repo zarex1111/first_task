@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Works log</h1>
+    {% for job in jobs %}
+        {% set user = create_session().query(user_class).get(job.team_leader) %}
+        <table class="table table-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Team leader</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Collaborators</th>
+                <th scope="col">Is finished</th>
+            </tr>
+            <tr>
+                <td>{{ job.job }}</td>
+                <td>{{ user.name }} {{ user.surname }}</td>
+                <td>{{ job.duration }} hours</td>
+                <td>{{ job.collaborators }}</td>
+                <td>{{ job.is_finished }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+{% endblock %}

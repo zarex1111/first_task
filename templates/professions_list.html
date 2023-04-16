@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if list_type != "ol" and list_type != "ul" %}
+<h2>Неправильный поиск</h2>
+{% else %}
+<h2>Топ 8 профессий на космическом корабле</h2>
+    <{{ list_type }}>
+    {% for duty in duties %}
+        <li>{{ duty }}</li>
+    {% endfor %}
+</{{ list_type }}>
+{% endif %}
+{% endblock %}

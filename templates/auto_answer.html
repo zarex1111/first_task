@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for elem in form %}
+        <p class="form-elem-info">
+            <b>{{ keys[elem] }}</b>: {{ form[elem] }}
+        </p>
+    {% endfor %}
+{% endblock %}
